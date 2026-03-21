@@ -14,7 +14,6 @@ import android.support.v4.media.session.MediaSessionCompat
 import androidx.collection.ArrayMap
 import android.text.TextUtils
 import android.util.Log
-import androidx.core.content.ContentResolverCompat
 import com.zy.ppmusic.App
 import com.zy.ppmusic.entity.MusicInfoEntity
 import kotlinx.coroutines.*
@@ -96,30 +95,30 @@ class DataProvider private constructor() {
                     MediaStore.Audio.Media.DATA,
                     MediaStore.Audio.Media.RELATIVE_PATH
                 )
-                val externalQuery = ContentResolverCompat.query(
-                    App.instance?.contentResolver,
+                val resolver = App.instance?.contentResolver ?: run {
+                    cont.resume(Void)
+                    return@launch
+                }
+                val externalQuery = resolver.query(
                     MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
                     projection,
                     MediaStore.Audio.Media.IS_MUSIC + "=?",
                     arrayOf("1"),
-                    null,
                     null
                 )
-                externalQuery?.use { cursor ->
+                externalQuery?.use { cursor: Cursor ->
                     val mediaMetadataRetriever = MediaMetadataRetriever()
                     queryContent(cursor, mediaMetadataRetriever)
                     mediaMetadataRetriever.release()
                 }
-                val internalQuery = ContentResolverCompat.query(
-                    App.instance?.contentResolver,
+                val internalQuery = resolver.query(
                     MediaStore.Audio.Media.INTERNAL_CONTENT_URI,
                     projection,
                     MediaStore.Audio.Media.IS_MUSIC + "=?",
                     arrayOf("1"),
-                    null,
                     null
                 )
-                internalQuery?.use { cursor ->
+                internalQuery?.use { cursor: Cursor ->
                     val mediaMetadataRetriever = MediaMetadataRetriever()
                     queryContent(cursor, mediaMetadataRetriever)
                     mediaMetadataRetriever.release()
@@ -399,3 +398,5 @@ class DataProvider private constructor() {
         }
     }
 }
+
+

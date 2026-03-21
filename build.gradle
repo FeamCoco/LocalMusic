@@ -1,19 +1,11 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-    apply from: 'versions.gradle'
-
-    repositories {
-        mavenCentral()
-        google()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.1'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10'
-        classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0' // add plugin
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
+plugins {
+    id 'com.android.application' version '9.1.0' apply false
+    id 'com.android.library' version '9.1.0' apply false
+    id 'com.android.legacy-kapt' version '9.1.0' apply false
+    id 'org.jetbrains.kotlin.plugin.compose' version '2.3.10' apply false
 }
+
+apply from: 'versions.gradle'
 
 allprojects {
     repositories {
@@ -22,6 +14,6 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
+tasks.register('clean', Delete) {
     delete rootProject.getBuildDir()
 }

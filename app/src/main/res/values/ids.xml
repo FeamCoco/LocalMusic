@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="ignore_theme_color" type="id" />
+    <item name="rb_choose_custom" type="id" />
+    <item name="rb_choose_system" type="id" />
 </resources>

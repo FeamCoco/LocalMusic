@@ -6,19 +6,19 @@
         <item name="colorPrimaryDark">@color/colorThemeDark</item>
         <item name="colorAccent">@color/colorTheme</item>
         <item name="android:windowBackground">@null</item>
-        <item name="android:statusBarColor">@color/colorTheme</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@color/colorSystemChrome</item>
+        <item name="android:navigationBarColor">@color/colorSystemChrome</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">@color/colorTheme</item>
+        <item name="android:statusBarColor">@color/colorSystemChrome</item>
     </style>
 
     <style name="AppTheme.SplashTheme" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/colorTheme</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_music_launcher_round</item>
+        <item name="windowSplashScreenBackground">@color/colorSplashBackground</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_linktone_mark</item>
         <item name="windowSplashScreenAnimationDuration">800</item>
         <item name="postSplashScreenTheme">@style/AppTheme</item>
     </style>

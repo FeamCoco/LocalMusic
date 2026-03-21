@@ -1,7 +1,11 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+}
 
 android {
+    namespace 'pub.devrel.easypermissions'
     compileSdkVersion build_versions.compileSdkVersion
+    enableKotlin = false
 
     defaultConfig {
         minSdkVersion build_versions.minSdkVersion
@@ -11,8 +15,13 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
@@ -20,5 +29,3 @@ dependencies {
     api 'androidx.appcompat:appcompat:1.3.1'
     api 'androidx.legacy:legacy-support-v4:1.0.0'
 }
-
-
