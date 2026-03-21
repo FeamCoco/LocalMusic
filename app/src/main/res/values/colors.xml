@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorAccent">#009688</color>
-    <color name="colorTheme">#0096A6</color>
-    <color name="colorThemeDark">#0096A6</color>
-    <color name="colorBlack">#2c2c2c</color>
-    <color name="colorWhite">#ffffff</color>
-    <color name="colorGray">#F0F0F0</color>
-    <color name="colorDarkGray">#5F5F5F</color>
+    <color name="colorAccent">#5167D8</color>
+    <color name="colorTheme">#5167D8</color>
+    <color name="colorThemeDark">#3146B3</color>
+    <color name="colorBlack">#1A2035</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#F6F7FC</color>
+    <color name="colorDarkGray">#66708D</color>
+    <color name="colorSystemChrome">#F6F7FC</color>
+    <color name="colorSplashBackground">#F6F7FC</color>
 </resources>

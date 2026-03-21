@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.zy.ppmusic">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -20,14 +19,20 @@
     <application
         android:name="com.zy.ppmusic.App"
         android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
         android:icon="@mipmap/ic_music_normal"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_music_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
-        android:requestLegacyExternalStorage="true"
-        tools:ignore="GoogleAppIndexingWarning"
-        android:dataExtractionRules="@xml/data_extraction_rules">
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity
+            android:name=".compose.ComposeSandboxActivity"
+            android:exported="false"
+            android:label="@string/compose_sandbox_title"
+            android:theme="@style/AppTheme" />
 
         <activity
             android:name="com.zy.ppmusic.mvp.view.BlScanActivity"
@@ -59,8 +64,8 @@
         <activity
             android:name=".mvp.view.MediaActivity"
             android:exported="true"
-            android:theme="@style/AppTheme.SplashTheme"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.SplashTheme">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -81,3 +86,4 @@
     </application>
 
 </manifest>
+

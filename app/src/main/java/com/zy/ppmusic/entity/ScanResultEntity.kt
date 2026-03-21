@@ -1,24 +1,14 @@
 package com.zy.ppmusic.entity
 
-
 import android.bluetooth.BluetoothDevice
 
-/**
- * @author stealfeam
- */
 class ScanResultEntity {
-    /**
-     * 布局的id
-     */
     var type: Int = 0
-    /**
-     * 头布局的标题
-     */
     var title: String? = null
     var state: String? = null
     var device: BluetoothDevice? = null
 
-    constructor() {}
+    constructor()
 
     constructor(type: Int, title: String) {
         this.type = type
@@ -32,10 +22,15 @@ class ScanResultEntity {
 
     override fun toString(): String {
         return "ScanResultEntity{" +
-                "type=" + type +
-                ", title='" + title + '\''.toString() +
-                ", state='" + state + '\''.toString() +
-                ", device=" + device +
-                '}'.toString()
+            "type=" + type +
+            ", title='" + title + '\'' +
+            ", state='" + state + '\'' +
+            ", device=" + device +
+            '}'
+    }
+
+    companion object {
+        const val TYPE_TITLE = 1
+        const val TYPE_DEVICE = 2
     }
 }

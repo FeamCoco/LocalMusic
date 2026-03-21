@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#BEC7FF</color>
+    <color name="colorTheme">#BEC7FF</color>
+    <color name="colorThemeDark">#2A376D</color>
+    <color name="colorBlack">#E2E6F3</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#0F1324</color>
+    <color name="colorDarkGray">#A7AFCC</color>
+    <color name="colorSystemChrome">#0F1324</color>
+    <color name="colorSplashBackground">#0F1324</color>
+</resources>

@@ -5,7 +5,6 @@ import android.bluetooth.BluetoothA2dp;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 
-import com.zy.ppmusic.R;
 import com.zy.ppmusic.mvp.contract.IBLActivityContract;
 import com.zy.ppmusic.entity.ScanResultEntity;
 
@@ -32,7 +31,7 @@ public class BlActivityModelImpl implements IBLActivityContract.IBLActivityModel
         List<ScanResultEntity> list = new ArrayList<>();
         @SuppressLint("MissingPermission") Set<BluetoothDevice> bondedDevices = mBlueAdapter.getBondedDevices();
         for (BluetoothDevice bondedDevice : bondedDevices) {
-            ScanResultEntity entity = new ScanResultEntity(R.layout.item_scan_child, bondedDevice);
+            ScanResultEntity entity = new ScanResultEntity(ScanResultEntity.TYPE_DEVICE, bondedDevice);
             list.add(entity);
         }
         return list;
@@ -80,3 +79,4 @@ public class BlActivityModelImpl implements IBLActivityContract.IBLActivityModel
         }
     }
 }
+

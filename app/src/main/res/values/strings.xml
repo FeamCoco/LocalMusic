@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">倩音</string>
+    <string name="app_name">连音</string>
     <string name="notification_channel_name">音频控制</string>
     <string name="normal_text">@string/app_name</string>
     <string name="scan_result_icon">扫描设备的标识</string>
@@ -14,7 +14,7 @@
     <string name="string_del_media">删除</string>
     <string name="string_sure_del">确认删除吗</string>
     <string name="string_del">删除</string>
-    <string name="string_cancel">不想删了</string>
+    <string name="string_cancel">取消</string>
     <string name="string_custom_time_hint">自定义</string>
     <string name="string_sure">确定</string>
     <string name="itemImgDes">itemImg</string>
@@ -34,10 +34,64 @@
     <string name="scan_media">扫描</string>
     <string name="set_time_to_come_down">定时关闭</string>
     <string name="unsupport_bluetooth">您的设备不支持蓝牙</string>
-    <string name="dialog_error_content_msg">抱歉，应用出现了点问题，请清除缓存后重新试一下吧(*^▽^*)</string>
-    <string name="dialog_error_sure">我知道了</string>
+    <string name="dialog_error_content_msg">应用遇到了一点问题，我们已经记录了错误信息。你可以重新打开应用继续使用。</string>
+    <string name="dialog_error_sure">退出应用</string>
     <string name="choose_notify_style">通知样式</string>
     <string name="choose_custom_style">自定义样式</string>
     <string name="choose_system_style">系统样式</string>
     <string name="notification_sub_text">无乐不欢</string>
+    <string name="compose_sandbox_title">Compose Sandbox</string>
+    <string name="compose_sandbox_subtitle">当前工程已经具备独立 Compose 页面能力。</string>
+    <string name="compose_sandbox_section_title">下一步迁移方向</string>
+    <string name="compose_sandbox_section_body">保持现有播放与蓝牙业务层不动，先把主题、列表项和低风险页面迁到 Compose。</string>
+    <string name="compose_sandbox_chip">AGP 9.1 + Compose</string>
+    <string name="compose_sandbox_button">保持增量迁移</string>
+    <string name="player_more_actions">更多操作</string>
+    <string name="player_now_playing_label">正在播放</string>
+    <string name="player_waiting_for_library">扫描本地音乐后即可开始播放</string>
+    <string name="player_loading_status">正在整理本地曲库</string>
+    <string name="player_loading_title">正在载入你的音乐</string>
+    <string name="player_loading_body">连音正在同步本地曲目、播放队列与封面</string>
+    <string name="player_ready_summary" formatted="false">已载入 %d 首本地曲目</string>
+    <string name="player_swipe_hint">左右滑动封面可切换歌曲</string>
+    <string name="player_state_playing">播放中</string>
+    <string name="player_state_paused">已暂停</string>
+    <string name="player_state_idle">等待播放</string>
+    <string name="player_state_position" formatted="false">第 %1$d / %2$d 首</string>
+    <string name="player_queue_progress_short" formatted="false">%1$d / %2$d</string>
+    <string name="player_timer_active" formatted="false">定时 %s</string>
+    <string name="player_empty_title">还没有可播放内容</string>
+    <string name="player_empty_subtitle">先扫描本地音频，再开始离线播放</string>
+    <string name="player_previous_track">上一首</string>
+    <string name="player_next_track">下一首</string>
+    <string name="player_queue_idle">未开始</string>
+    <string name="player_queue_button_label">播放队列</string>
+    <string name="player_queue_summary_empty">还没有加入播放队列</string>
+    <string name="player_queue_summary_ready">轻触查看与切歌</string>
+    <string name="player_next_up_label">下一首</string>
+    <string name="player_next_up_none">当前已经是最后一首</string>
+    <string name="player_empty_library_title">还没有导入本地音乐</string>
+    <string name="player_empty_library_body">扫描曲库后，连音会把你的离线音乐整理到播放队列里，并保留蓝牙耳机与睡眠定时能力。</string>
+    <string name="player_empty_library_primary_action">扫描曲库</string>
+    <string name="player_empty_library_secondary_action">蓝牙设备</string>
+    <string name="player_loading_card_title">首页正在准备中</string>
+    <string name="player_loading_card_body">首次进入或重新扫描时，连音会先整理本地曲库，再把它们放进播放器控制台。</string>
+    <string name="player_queue_section_title">即将播放</string>
+    <string name="player_queue_section_body">查看当前队列并快速切歌</string>
+    <string name="player_queue_tracks_count" formatted="false">%d 首</string>
+    <string name="player_queue_sheet_title">播放队列</string>
+    <string name="player_queue_sheet_body">轻触切歌，查看详情或移出队列</string>
+    <string name="player_queue_item_detail_action">详情</string>
+    <string name="player_delete_dialog_title">从播放队列中移除？</string>
+    <string name="player_delete_dialog_body" formatted="false">将移除《%1$s》\n%2$s</string>
+    <string name="player_delete_dialog_body_fallback">将从当前播放队列中移除这首歌曲。</string>
+    <string name="player_delete_dialog_checkbox">同时删除本地文件</string>
+    <string name="player_timer_sheet_title">睡眠定时</string>
+    <string name="player_timer_sheet_body">选择一个时间后，播放器会在倒计时结束时自动停止播放。</string>
+    <string name="player_timer_current" formatted="false">当前剩余：%s</string>
+    <string name="player_timer_cancel">取消定时</string>
+    <string name="player_timer_minutes" formatted="false">%d 分钟</string>
+    <string name="error_screen_title">应用暂时无法继续</string>
+    <string name="error_screen_label">恢复与诊断</string>
+    <string name="error_screen_detail_label">错误摘要</string>
 </resources>
