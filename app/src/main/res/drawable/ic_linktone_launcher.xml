@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#5167D8" />
+            <corners android:radius="22dp" />
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/ic_linktone_mark_light"
+        android:gravity="center"
+        android:top="12dp"
+        android:bottom="12dp"
+        android:left="12dp"
+        android:right="12dp" />
+</layer-list>

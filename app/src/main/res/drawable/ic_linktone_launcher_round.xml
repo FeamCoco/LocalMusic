@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#5167D8" />
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/ic_linktone_mark_light"
+        android:gravity="center"
+        android:top="14dp"
+        android:bottom="14dp"
+        android:left="14dp"
+        android:right="14dp" />
+</layer-list>

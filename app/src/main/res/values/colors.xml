@@ -9,4 +9,7 @@
     <color name="colorDarkGray">#66708D</color>
     <color name="colorSystemChrome">#F6F7FC</color>
     <color name="colorSplashBackground">#F6F7FC</color>
+    <color name="colorSnackbarBackground">#11182D</color>
+    <color name="colorSnackbarText">#F8FAFF</color>
+    <color name="colorSnackbarAction">#A9B8FF</color>
 </resources>

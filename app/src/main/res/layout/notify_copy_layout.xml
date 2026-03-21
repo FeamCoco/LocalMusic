@@ -14,7 +14,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:padding="@dimen/dp10"
-        app:srcCompat="@drawable/ic_music_normal_round"
+        app:srcCompat="@drawable/ic_linktone_launcher_round"
         android:contentDescription="@string/artist_headset"/>
 
     <TextView

@@ -19,6 +19,8 @@ import android.support.v4.media.session.MediaSessionCompat
 import android.support.v4.media.session.PlaybackStateCompat
 import android.view.KeyEvent
 import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.getValue
 import androidx.annotation.Keep
@@ -44,9 +46,9 @@ import com.zy.ppmusic.utils.logd
 import com.zy.ppmusic.utils.loge
 import com.zy.ppmusic.utils.toast
 import com.zy.ppmusic.widget.ChooseStyleDialog
-import com.zy.ppmusic.widget.EasyTintView
 import com.zy.ppmusic.widget.Loader
 import com.zy.ppmusic.ui.media.MediaScreenViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
@@ -71,6 +73,7 @@ class MediaActivity : AbstractBaseMvpActivity<MediaPresenterImpl>(), IMediaActiv
     private var doDelActionPosition = -1
     private var doDelActionIncludeFile = true
     private var pendingSeekFraction = 0f
+    private var snackbar: Snackbar? = null
     private val countdownOptions = listOf(15, 30, 45, 60, 75, 120)
     private val mediaScreenViewModel by lazy { ViewModelProvider(this).get(MediaScreenViewModel::class.java) }
 
@@ -650,9 +653,31 @@ class MediaActivity : AbstractBaseMvpActivity<MediaPresenterImpl>(), IMediaActiv
     }
 
     private fun showMsg(msg: String) {
-        val rootView = findViewById<View>(android.R.id.content) ?: contentView
-        EasyTintView.makeText(rootView, msg, EasyTintView.TINT_SHORT).show()
+        val rootView = findViewById<View>(R.id.compose_host_root)
+            ?: findViewById(android.R.id.content)
+            ?: contentView
+        snackbar?.dismiss()
+        snackbar = Snackbar.make(rootView, msg, Snackbar.LENGTH_SHORT).apply {
+            animationMode = Snackbar.ANIMATION_MODE_SLIDE
+            setBackgroundTint(ContextCompat.getColor(this@MediaActivity, R.color.colorSnackbarBackground))
+            setTextColor(ContextCompat.getColor(this@MediaActivity, R.color.colorSnackbarText))
+            setActionTextColor(ContextCompat.getColor(this@MediaActivity, R.color.colorSnackbarAction))
+            view.elevation = 10.dp().toFloat()
+            view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)?.setTextColor(
+                ContextCompat.getColor(this@MediaActivity, R.color.colorSnackbarText),
+            )
+            (view.layoutParams as? ViewGroup.MarginLayoutParams)?.let { params ->
+                val horizontalMargin = 20.dp()
+                params.leftMargin = horizontalMargin
+                params.rightMargin = horizontalMargin
+                params.bottomMargin += 24.dp()
+                view.layoutParams = params
+            }
+            show()
+        }
     }
+
+    private fun Int.dp(): Int = (this * resources.displayMetrics.density).toInt()
 
     private fun setMediaInfo(displayTitle: String?, subTitle: String?) {
         mediaScreenViewModel.updateHeader { state ->
@@ -677,6 +702,8 @@ class MediaActivity : AbstractBaseMvpActivity<MediaPresenterImpl>(), IMediaActiv
 
     override fun onDestroy() {
         super.onDestroy()
+        snackbar?.dismiss()
+        snackbar = null
         disConnectService()
         resultReceive = null
         loader?.hide()

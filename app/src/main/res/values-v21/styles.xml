@@ -18,7 +18,7 @@
 
     <style name="AppTheme.SplashTheme" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/colorSplashBackground</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_linktone_mark</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_linktone_launcher_round</item>
         <item name="windowSplashScreenAnimationDuration">800</item>
         <item name="postSplashScreenTheme">@style/AppTheme</item>
     </style>

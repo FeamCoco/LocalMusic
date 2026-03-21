@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.graphics.Canvas
 import android.os.Build
 import android.support.v4.media.session.MediaSessionCompat
 import android.support.v4.media.session.PlaybackStateCompat
@@ -14,7 +14,7 @@ import android.util.Log
 import android.view.KeyEvent
 import android.widget.RemoteViews
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.media.app.NotificationCompat
 import androidx.media.session.MediaButtonReceiver
 import com.zy.ppmusic.R
@@ -25,6 +25,7 @@ import com.zy.ppmusic.mvp.view.MediaActivity
  */
 object NotificationUtils {
     private const val TAG = "NotificationUtils"
+    private const val DEFAULT_ICON_SIZE = 192
     /**
      * 通知的id
      */
@@ -65,7 +66,7 @@ object NotificationUtils {
         builder.setContentIntent(mediaSession.controller.sessionActivity)
         builder.setDeleteIntent(handleBuildMediaButtonPendingIntent(context, PlaybackStateCompat.ACTION_STOP))
         builder.setVisibility(androidx.core.app.NotificationCompat.VISIBILITY_PUBLIC)
-        builder.setSmallIcon(R.drawable.ic_small_notify)
+        builder.setSmallIcon(R.drawable.ic_small_notify_linktone)
         builder.setColorized(true)
 
         builder.addAction(
@@ -120,14 +121,12 @@ object NotificationUtils {
         }
         if (descriptionCompat != null) {
             if (descriptionCompat.iconBitmap == null) {
-                builder.setLargeIcon(BitmapFactory.decodeResource(context.resources,
-                        R.drawable.ic_music_normal_round))
+                builder.setLargeIcon(createBrandLargeIcon(context))
             } else {
                 builder.setLargeIcon(descriptionCompat.iconBitmap)
             }
         } else {
-            builder.setLargeIcon(BitmapFactory.decodeResource(context.resources,
-                    R.drawable.ic_music_normal_round))
+            builder.setLargeIcon(createBrandLargeIcon(context))
         }
         return builder.build()
     }
@@ -192,14 +191,14 @@ object NotificationUtils {
 
         if (isPlaying) {
             if (iconBitmap == null) {
-                contentView.setImageViewResource(R.id.notify_artist_head_iv, R.drawable.ic_music_play)
+                contentView.setImageViewResource(R.id.notify_artist_head_iv, R.drawable.ic_linktone_launcher_round)
             } else {
                 contentView.setImageViewBitmap(R.id.notify_artist_head_iv, iconBitmap)
             }
             contentView.setImageViewResource(R.id.notify_action_play_pause, R.drawable.ic_pause)
         } else {
             if (iconBitmap == null) {
-                contentView.setImageViewResource(R.id.notify_artist_head_iv, R.drawable.ic_music_normal_round)
+                contentView.setImageViewResource(R.id.notify_artist_head_iv, R.drawable.ic_linktone_launcher_round)
             } else {
                 contentView.setImageViewBitmap(R.id.notify_artist_head_iv, iconBitmap)
             }
@@ -234,9 +233,21 @@ object NotificationUtils {
         builder.setContentIntent(sessionCompat.controller.sessionActivity)
         builder.setDeleteIntent(handleBuildMediaButtonPendingIntent(context, PlaybackStateCompat.ACTION_STOP))
         builder.setVisibility(androidx.core.app.NotificationCompat.VISIBILITY_PUBLIC)
-        builder.setSmallIcon(R.drawable.ic_small_notify)
+        builder.setSmallIcon(R.drawable.ic_small_notify_linktone)
 
         return builder.build()
+    }
+
+    private fun createBrandLargeIcon(context: Context): Bitmap {
+        val drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.ic_linktone_launcher_round, context.theme)
+            ?: error("Missing brand notification icon")
+        val width = drawable.intrinsicWidth.takeIf { it > 0 } ?: DEFAULT_ICON_SIZE
+        val height = drawable.intrinsicHeight.takeIf { it > 0 } ?: DEFAULT_ICON_SIZE
+        val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        drawable.setBounds(0, 0, canvas.width, canvas.height)
+        drawable.draw(canvas)
+        return bitmap
     }
 
     /**
